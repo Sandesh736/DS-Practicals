@@ -1,0 +1,27 @@
+import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
+import numpy as np
+df=pd.read_csv("D:\Ds Practicals\Iris.csv")
+print(df.head())
+#%%
+print(df.describe())
+#%%
+print(df.columns)
+#%%
+fig,axes=plt.subplots(2,2,figsize=(12,6))
+axes[0,0].set_title("Distribution Of Column 1")
+axes[0,0].hist(df['SepalLengthCm'])
+axes[0,1].set_title("Distribution Of Column 2")
+axes[0,1].hist(df["SepalWidthCm"]);
+axes[1,0].set_title("Distribution Of Column 3")
+axes[1,0].hist(df["PetalWidthCm"]);
+axes[1,1].set_title("Distribution Of Column 4")
+axes[1,1].hist(df["PetalLengthCm"])
+#%%
+data_to_plot=df.columns
+print(data_to_plot)
+sns.set_style('whitegrid')
+fig=plt.figure(1,figsize=(12,6))
+ax=fig.add_subplot(111)
+bxplt=ax.boxplot(data_to_plot)
