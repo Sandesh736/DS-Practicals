@@ -1,0 +1,36 @@
+import pandas as pd
+import  matplotlib.pyplot as plt
+import seaborn as sns
+#%%
+df=pd.read_csv("D:\Ds Practicals\Iris.csv")
+print(df.head())
+#%%
+print(df.info)
+#%%
+print(df.describe())
+#%%
+print(df.columns)
+df[['SepalLengthCm']].values.astype(int)
+print(df[["SepalLengthCm"]])
+#%%
+print("mean of SepalLength : ",df.SepalLengthCm.mean())
+#%%
+print(df.SepalLengthCm.median())
+#%%
+print(df.SepalLengthCm.mode())
+#%%
+print(df.SepalLengthCm.std())
+import statistics
+print(statistics.mode(df['SepalLengthCm']))
+#%%
+print(statistics.stdev(df['SepalLengthCm']))
+#%%
+print(df.groupby('Species')[['SepalLengthCm']].mean())
+#%%
+print(df.groupby('Species')[['SepalLengthCm']].median())
+#%%
+print(df.groupby('Species')[['SepalLengthCm']].std())
+#%%
+print(df.corr())
+sns.heatmap(df.corr().abs(),annot=True)
+#%%
