@@ -1,0 +1,32 @@
+import pandas as pd
+#from sklearn import preprocessing
+import warnings
+warnings.filterwarnings("ignore")
+#%%
+df=pd.read_csv('D:\Ds Practicals\Iris.csv')
+print(df.head)
+#%%
+print(df.isnull().sum())
+#%%
+x=df[['Id']].values.astype(float)
+print(x)
+y=df[['Species']]
+print(y)
+#%%
+df['Species'].unique()
+#%%
+from sklearn.preprocessing import MinMaxScaler
+min_max_scaler=MinMaxScaler()
+x_scaled=min_max_scaler.fit_transform(x)
+df_normalized=pd.DataFrame(x_scaled)
+print(df_normalized)
+#%%
+from sklearn.preprocessing import LabelEncoder
+label_encoder=LabelEncoder()
+encoder=label_encoder.fit_transform(df['Species'])
+df['Species'].unique()
+#%%
+feature_df=df.drop(columns=['Species'])
+one_hot_df=pd.get_dummies(df,prefix='Species',columns=["Species"],drop_first=False)
+print(one_hot_df)
+#%%
